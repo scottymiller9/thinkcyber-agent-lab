@@ -1,0 +1,16 @@
+services:
+  target:
+    build: ./thinkcyber-lab-2026
+    ports:
+      - "8000:8000"
+
+  agent:
+    build: .
+    env_file: .env
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    depends_on:
+      - target
+    stdin_open: true
+    tty: true
